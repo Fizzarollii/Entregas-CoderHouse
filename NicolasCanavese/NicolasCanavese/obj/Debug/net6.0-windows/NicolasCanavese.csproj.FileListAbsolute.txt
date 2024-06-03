@@ -22,3 +22,5 @@ C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windo
 C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windows\NicolasCanavese.pdb
 C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windows\NicolasCanavese.genruntimeconfig.cache
 C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windows\ref\NicolasCanavese.dll
+C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windows\NicolasCanavese.Productos.resources
+C:\Users\parae\Desktop\C#\NicolasCanavese\NicolasCanavese\obj\Debug\net6.0-windows\NicolasCanavese.Usuarios.resources
