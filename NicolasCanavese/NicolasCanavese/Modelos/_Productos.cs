@@ -11,13 +11,13 @@ namespace NicolasCanavese.Modelos
     {
         public int id;
         public string? descripciones;
-        public double costo;
-        public double precioVenta;
+        public int costo;
+        public int precioVenta;
         public int stock;
         public int idUsuario;
 
         public _Productos() { }
-        public _Productos(int id, string descripciones, double costo, double precioVenta, int stock, int idUsuario)
+        public _Productos(int id, string descripciones, int costo, int precioVenta, int stock, int idUsuario)
         {
             this.id = id;
             this.descripciones = descripciones;
@@ -27,7 +27,7 @@ namespace NicolasCanavese.Modelos
             this.idUsuario = idUsuario;
         }
 
-        public _Productos(string descripciones, double costo, double precioVenta, int stock, int idUsuario)
+        public _Productos(string descripciones, int costo, int precioVenta, int stock, int idUsuario)
         {
             this.descripciones = descripciones;
             this.costo = costo;
@@ -38,14 +38,11 @@ namespace NicolasCanavese.Modelos
 
         public int Id { get => id; set => id = value; }
         public string Descripciones { get => descripciones; set => descripciones = value; }
-        public double Costo { get => costo; set => costo = value; }
-        public double PrecioVenta { get => precioVenta; set => precioVenta = value; }
+        public int Costo { get => costo; set => costo = value; }
+        public int PrecioVenta { get => precioVenta; set => precioVenta = value; }
         public int Stock { get => stock; set => stock = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
-        public override string ToString()
-        {
-            return $"Id = {this.id} - descripciones = {this.descripciones} - costo = {this.costo} - Precio de la venta = {this.precioVenta}  - stock = {this.stock} - id usuario = {this.idUsuario}";
-        }
+        
     }
 }

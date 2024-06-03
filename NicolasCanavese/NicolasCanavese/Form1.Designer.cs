@@ -32,14 +32,15 @@
             btModificarProducto = new Button();
             button3 = new Button();
             button4 = new Button();
-            cbCambios = new ComboBox();
             dgvPrincipal = new DataGridView();
+            dgvUsuarios = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvPrincipal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // btEliminarProdcuto
             // 
-            btEliminarProdcuto.Location = new Point(661, 70);
+            btEliminarProdcuto.Location = new Point(661, 12);
             btEliminarProdcuto.Name = "btEliminarProdcuto";
             btEliminarProdcuto.Size = new Size(127, 23);
             btEliminarProdcuto.TabIndex = 2;
@@ -49,7 +50,7 @@
             // 
             // btModificarProducto
             // 
-            btModificarProducto.Location = new Point(661, 99);
+            btModificarProducto.Location = new Point(661, 41);
             btModificarProducto.Name = "btModificarProducto";
             btModificarProducto.Size = new Size(127, 23);
             btModificarProducto.TabIndex = 3;
@@ -59,7 +60,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(661, 145);
+            button3.Location = new Point(661, 277);
             button3.Name = "button3";
             button3.Size = new Size(127, 23);
             button3.TabIndex = 4;
@@ -69,40 +70,40 @@
             // 
             // button4
             // 
-            button4.Location = new Point(661, 174);
+            button4.Location = new Point(661, 306);
             button4.Name = "button4";
             button4.Size = new Size(127, 23);
             button4.TabIndex = 5;
             button4.Text = "button4";
             button4.UseVisualStyleBackColor = true;
             // 
-            // cbCambios
-            // 
-            cbCambios.FormattingEnabled = true;
-            cbCambios.Items.AddRange(new object[] { "Productos", "Usuarios" });
-            cbCambios.Location = new Point(280, 314);
-            cbCambios.Name = "cbCambios";
-            cbCambios.Size = new Size(121, 23);
-            cbCambios.TabIndex = 6;
-            cbCambios.SelectedIndexChanged += cbCambios_SelectedIndexChanged;
-            // 
             // dgvPrincipal
             // 
             dgvPrincipal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrincipal.Location = new Point(12, 57);
+            dgvPrincipal.Location = new Point(12, 12);
             dgvPrincipal.Name = "dgvPrincipal";
             dgvPrincipal.RowTemplate.Height = 25;
             dgvPrincipal.Size = new Size(643, 237);
             dgvPrincipal.TabIndex = 7;
             dgvPrincipal.CellClick += dgvPrincipal_CellClick;
             // 
+            // dgvUsuarios
+            // 
+            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Location = new Point(12, 277);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.RowTemplate.Height = 25;
+            dgvUsuarios.Size = new Size(643, 150);
+            dgvUsuarios.TabIndex = 8;
+            dgvUsuarios.CellClick += DgvUsuarios_CellClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvUsuarios);
             Controls.Add(dgvPrincipal);
-            Controls.Add(cbCambios);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(btModificarProducto);
@@ -111,6 +112,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPrincipal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
         }
 
@@ -119,7 +121,7 @@
         private Button btModificarProducto;
         private Button button3;
         private Button button4;
-        private ComboBox cbCambios;
         private DataGridView dgvPrincipal;
+        private DataGridView dgvUsuarios;
     }
 }

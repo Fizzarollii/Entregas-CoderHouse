@@ -25,19 +25,13 @@ namespace NicolasCanavese
             txtPassword.Text = "";
             txtEmail.Text = "";
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Program.form1.Show();
-        }
-
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            int idUsuario = Program.form1.idUsuario;
-            if (idUsuario > 0)
+            int idUsuario2 = Program.form1.idUsuario2;
+            if (idUsuario2 > 0)
             {
                 UsuarioData usuarios = new UsuarioData();
-                _Usuarios txtusuarios = usuarios.GetUserById(idUsuario);
+                _Usuarios txtusuarios = usuarios.GetUserById(idUsuario2);
 
                 txtNombre.Text = txtusuarios.Nombre;
                 txtApellido.Text = txtusuarios.Apellido;
@@ -49,6 +43,12 @@ namespace NicolasCanavese
             {
                 Limpiar();
             }
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Program.form1.idUsuario2 = 0;
+            Program.form1.Show();
         }
     }
 }

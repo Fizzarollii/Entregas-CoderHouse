@@ -42,8 +42,8 @@ namespace NicolasCanavese
                                 var producto = new Modelos._Productos();
                                 producto.Id = Convert.ToInt32(dr["Id"]);
                                 producto.Descripciones = dr["Descripciones"].ToString();
-                                producto.Costo = (double)Convert.ToDecimal(dr["Costo"]);
-                                producto.PrecioVenta = (double)Convert.ToDecimal(dr["PrecioVenta"]);
+                                producto.Costo = Convert.ToInt32(dr["Costo"]);
+                                producto.PrecioVenta = Convert.ToInt32(dr["PrecioVenta"]);
                                 producto.Stock = (int)Convert.ToDecimal(dr["Stock"]);
                                 producto.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
                                 lista.Add(producto);
@@ -57,7 +57,7 @@ namespace NicolasCanavese
 
         public static List<Modelos._Productos> ListarProductos()
         {
-            List<Modelos._Productos> lista = new List<Modelos._Productos>();
+            List<Modelos._Productos> lista = new List<_Productos>();
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "SELECT Id,Descripciones,Costo,PrecioVenta,Stock,IdUsuario FROM Producto";
 
@@ -76,8 +76,8 @@ namespace NicolasCanavese
                                 var producto = new Modelos._Productos();
                                 producto.Id = Convert.ToInt32(dr["Id"]);
                                 producto.Descripciones = dr["Descripciones"].ToString();
-                                producto.Costo = (double)Convert.ToDecimal(dr["Costo"]);
-                                producto.PrecioVenta = (double)Convert.ToDecimal(dr["PrecioVenta"]);
+                                producto.Costo = Convert.ToInt32(dr["Costo"]);
+                                producto.PrecioVenta = Convert.ToInt32(dr["PrecioVenta"]);
                                 producto.Stock = (int)Convert.ToDecimal(dr["Stock"]);
                                 producto.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
                                 lista.Add(producto);
@@ -89,7 +89,7 @@ namespace NicolasCanavese
             return lista;
         }
 
-        public static void CrearProducto(Modelos._Productos producto)
+        public static void CrearProducto(_Productos producto)
         {
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "INSERT INTO Producto (Descripciones,Costo,PrecioVenta,Stock,IdUsuario)" +
@@ -137,7 +137,7 @@ namespace NicolasCanavese
             }
         }
 
-        public static void EliminarProducto(Modelos._Productos producto)
+        public static void EliminarProducto(_Productos producto)
         {
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "DELETE FROM Producto WHERE Id = @Id";
@@ -148,8 +148,8 @@ namespace NicolasCanavese
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = producto.Id });
+                    comando.ExecuteNonQuery();
                 }
-                conexion.Close();
             }
         }
 
@@ -159,7 +159,7 @@ namespace NicolasCanavese
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Producto WHERE Id = @Id";
+                string query = "SELECT * FROM Producto WHERE id = @id";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("id", id);
@@ -169,14 +169,14 @@ namespace NicolasCanavese
 
                 if (reader.Read())
                 {
-                    int Id = reader.GetInt32(1);
-                    string descripciones = reader.GetString(2);
-                    double costo = reader.GetDouble(3);
-                    double precioVenta = reader.GetDouble(4);
-                    int stock = reader.GetInt32(5);
-                    int idUsuario = reader.GetInt32(6);
+                    int Id = (int)reader.GetInt64(0);
+                    string descripciones = reader.GetString(1);
+                    int costo = (int)reader.GetDecimal(2);
+                    int precioVenta = (int)reader.GetDecimal (3);
+                    int stock = reader.GetInt32(4);
+                    int idUsuario = (int)reader.GetInt64(5);
 
-                    _Productos productos = new _Productos(id, descripciones, costo, precioVenta, stock, idUsuario);
+                    _Productos productos = new _Productos(Id, descripciones, costo, precioVenta, stock, idUsuario);
 
                     return productos;
                 }

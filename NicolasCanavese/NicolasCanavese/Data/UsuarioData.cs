@@ -145,6 +145,7 @@ namespace NicolasCanavese
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = usuario.Id });
+                    comando.ExecuteNonQuery();
                 }
                 conexion.Close();
             }

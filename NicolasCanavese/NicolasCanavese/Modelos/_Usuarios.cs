@@ -9,11 +9,11 @@ namespace NicolasCanavese.Modelos
     internal class _Usuarios
     {
         private int id;
-        private string nombre;
-        private string apellido;
-        private string nombreUsuario;
-        private string password;
-        private string email;
+        private string? nombre;
+        private string? apellido;
+        private string? nombreUsuario;
+        private string? password;
+        private string? email;
 
         public _Usuarios() { }
         public _Usuarios(string nombre, string apellido, string nombreUsuario, string password, string email)

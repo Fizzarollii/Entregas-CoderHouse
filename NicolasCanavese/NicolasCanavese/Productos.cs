@@ -19,6 +19,7 @@ namespace NicolasCanavese
         }
         public void Limpiar()
         {
+            txtId.Text = "";
             txtDescripcion.Text = "";
             txtCosto.Text = "";
             txtPrecioVenta.Text = "";
@@ -28,27 +29,40 @@ namespace NicolasCanavese
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            Program.form1.idUsuario = 0;
             Program.form1.Show();
         }
 
         private void Productos_Load(object sender, EventArgs e)
         {
             int idUsuario = Program.form1.idUsuario;
-            if (idUsuario == 0)
+            if (idUsuario > 0)
             {
                 ProductoData productos = new ProductoData();
                 _Productos txtProductos = productos.GetProductById(idUsuario);
 
-                txtDescripcion.Text = txtProductos.Descripciones;
-                txtCosto.Text = txtProductos.Costo.ToString();
-                txtPrecioVenta.Text = txtProductos.PrecioVenta.ToString();
-                txtStock.Text = txtProductos.Stock.ToString();
-                txtIdUsuario.Text = txtProductos.IdUsuario.ToString();
+                txtId.Text = txtProductos.id.ToString();
+                txtDescripcion.Text = txtProductos.descripciones;
+                txtCosto.Text = txtProductos.costo.ToString();
+                txtPrecioVenta.Text = txtProductos.precioVenta.ToString();
+                txtStock.Text = txtProductos.stock.ToString();
+                txtIdUsuario.Text = txtProductos.idUsuario.ToString();
             }
             else
             {
-                Limpiar();   
+                Limpiar();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string idText = txtId.Text;
+            if (!string.IsNullOrEmpty(idText) && int.TryParse(idText, out int id))
+            {
+                _Productos producto = new _Productos { Id = id };
+                ProductoData.EliminarProducto(producto);
             }
         }
     }
 }
+
