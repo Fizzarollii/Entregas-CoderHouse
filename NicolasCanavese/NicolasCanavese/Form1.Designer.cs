@@ -33,9 +33,8 @@
             button3 = new Button();
             button4 = new Button();
             dgvPrincipal = new DataGridView();
-            dgvUsuarios = new DataGridView();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvPrincipal).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // btEliminarProdcuto
@@ -87,22 +86,22 @@
             dgvPrincipal.TabIndex = 7;
             dgvPrincipal.CellClick += dgvPrincipal_CellClick;
             // 
-            // dgvUsuarios
+            // comboBox1
             // 
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(12, 277);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.RowTemplate.Height = 25;
-            dgvUsuarios.Size = new Size(643, 150);
-            dgvUsuarios.TabIndex = 8;
-            dgvUsuarios.CellClick += DgvUsuarios_CellClick;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Productos\t", "Usuarios" });
+            comboBox1.Location = new Point(250, 320);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 8;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dgvUsuarios);
+            Controls.Add(comboBox1);
             Controls.Add(dgvPrincipal);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -112,7 +111,6 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPrincipal).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
         }
 
@@ -122,6 +120,6 @@
         private Button button3;
         private Button button4;
         private DataGridView dgvPrincipal;
-        private DataGridView dgvUsuarios;
+        private ComboBox comboBox1;
     }
 }

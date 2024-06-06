@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\parae\\Desktop\\C#\\NicolasCanavese\\NicolasCanavese\\NicolasCanavese.csproj": {}
+    "C:\\Users\\parae\\Desktop\\C#\\NicolasCanaveseMain\\NicolasCanavese\\NicolasCanavese.csproj": {}
   },
   "projects": {
-    "C:\\Users\\parae\\Desktop\\C#\\NicolasCanavese\\NicolasCanavese\\NicolasCanavese.csproj": {
+    "C:\\Users\\parae\\Desktop\\C#\\NicolasCanaveseMain\\NicolasCanavese\\NicolasCanavese.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanavese\\NicolasCanavese\\NicolasCanavese.csproj",
+        "projectUniqueName": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanaveseMain\\NicolasCanavese\\NicolasCanavese.csproj",
         "projectName": "NicolasCanavese",
-        "projectPath": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanavese\\NicolasCanavese\\NicolasCanavese.csproj",
+        "projectPath": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanaveseMain\\NicolasCanavese\\NicolasCanavese.csproj",
         "packagesPath": "C:\\Users\\parae\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanavese\\NicolasCanavese\\obj\\",
+        "outputPath": "C:\\Users\\parae\\Desktop\\C#\\NicolasCanaveseMain\\NicolasCanavese\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\parae\\AppData\\Roaming\\NuGet\\NuGet.Config",

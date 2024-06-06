@@ -16,9 +16,9 @@ namespace NicolasCanavese
     {
         private string connectionString;
 
-        public static List<Modelos._Productos> ObtenerProducto(int IdProducto)
+        public static List<Modelos.Productos> ObtenerProducto(int IdProducto)
         {
-            List<Modelos._Productos> lista = new List<Modelos._Productos>();
+            List<Modelos.Productos> lista = new List<Modelos.Productos>();
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "SELECT Id,Descripciones,Costo,PrecioVenta,Stock,IdUsuario FROM Producto WHERE Id=@IdProducto";
 
@@ -39,13 +39,13 @@ namespace NicolasCanavese
                         {
                             while (dr.Read())
                             {
-                                var producto = new Modelos._Productos();
-                                producto.Id = Convert.ToInt32(dr["Id"]);
-                                producto.Descripciones = dr["Descripciones"].ToString();
-                                producto.Costo = Convert.ToInt32(dr["Costo"]);
-                                producto.PrecioVenta = Convert.ToInt32(dr["PrecioVenta"]);
-                                producto.Stock = (int)Convert.ToDecimal(dr["Stock"]);
-                                producto.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                                var producto = new Modelos.Productos();
+                                producto.id = Convert.ToInt32(dr["Id"]);
+                                producto.descripciones = dr["Descripciones"].ToString();
+                                producto.costo = Convert.ToInt32(dr["Costo"]);
+                                producto.precioVenta = Convert.ToInt32(dr["PrecioVenta"]);
+                                producto.stock = (int)Convert.ToDecimal(dr["Stock"]);
+                                producto.idUsuario = Convert.ToInt32(dr["IdUsuario"]);
                                 lista.Add(producto);
                             }
                         }
@@ -55,9 +55,9 @@ namespace NicolasCanavese
             return lista;
         }
 
-        public static List<Modelos._Productos> ListarProductos()
+        public static List<Modelos.Productos> ListarProductos()
         {
-            List<Modelos._Productos> lista = new List<_Productos>();
+            List<Modelos.Productos> lista = new List<Productos>();
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "SELECT Id,Descripciones,Costo,PrecioVenta,Stock,IdUsuario FROM Producto";
 
@@ -73,13 +73,13 @@ namespace NicolasCanavese
                         {
                             while (dr.Read())
                             {
-                                var producto = new Modelos._Productos();
-                                producto.Id = Convert.ToInt32(dr["Id"]);
-                                producto.Descripciones = dr["Descripciones"].ToString();
-                                producto.Costo = Convert.ToInt32(dr["Costo"]);
-                                producto.PrecioVenta = Convert.ToInt32(dr["PrecioVenta"]);
-                                producto.Stock = (int)Convert.ToDecimal(dr["Stock"]);
-                                producto.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                                var producto = new Modelos.Productos();
+                                producto.id = Convert.ToInt32(dr["Id"]);
+                                producto.descripciones = dr["Descripciones"].ToString();
+                                producto.costo = Convert.ToInt32(dr["Costo"]);
+                                producto.precioVenta = Convert.ToInt32(dr["PrecioVenta"]);
+                                producto.stock = (int)Convert.ToDecimal(dr["Stock"]);
+                                producto.idUsuario = Convert.ToInt32(dr["IdUsuario"]);
                                 lista.Add(producto);
                             }
                         }
@@ -89,7 +89,7 @@ namespace NicolasCanavese
             return lista;
         }
 
-        public static void CrearProducto(_Productos producto)
+        public static void CrearProducto(Productos producto)
         {
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "INSERT INTO Producto (Descripciones,Costo,PrecioVenta,Stock,IdUsuario)" +
@@ -100,17 +100,17 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Descripciones", SqlDbType.VarChar) { Value = producto.Descripciones });
-                    comando.Parameters.Add(new SqlParameter("Costo", SqlDbType.VarChar) { Value = producto.Costo });
-                    comando.Parameters.Add(new SqlParameter("PrecioVenta", SqlDbType.VarChar) { Value = producto.PrecioVenta });
-                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.VarChar) { Value = producto.Stock });
-                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.VarChar) { Value = producto.IdUsuario });
+                    comando.Parameters.Add(new SqlParameter("Descripciones", SqlDbType.VarChar) { Value = producto.descripciones });
+                    comando.Parameters.Add(new SqlParameter("Costo", SqlDbType.VarChar) { Value = producto.costo });
+                    comando.Parameters.Add(new SqlParameter("PrecioVenta", SqlDbType.VarChar) { Value = producto.precioVenta });
+                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.VarChar) { Value = producto.stock });
+                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.VarChar) { Value = producto.idUsuario });
                 }
                 conexion.Close();
             }
         }
 
-        public static void ModificarProducto(Modelos._Productos producto)
+        public static void ModificarProducto(Modelos.Productos producto)
         {
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "UPDATE Producto" +
@@ -126,18 +126,18 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = producto.Id });
-                    comando.Parameters.Add(new SqlParameter("Descripciones", SqlDbType.VarChar) { Value = producto.Descripciones });
-                    comando.Parameters.Add(new SqlParameter("Costo", SqlDbType.Money) { Value = producto.Costo });
-                    comando.Parameters.Add(new SqlParameter("PrecioVenta", SqlDbType.Money) { Value = producto.PrecioVenta });
-                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = producto.Stock });
-                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.VarChar) { Value = producto.IdUsuario });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = producto.id });
+                    comando.Parameters.Add(new SqlParameter("Descripciones", SqlDbType.VarChar) { Value = producto.descripciones });
+                    comando.Parameters.Add(new SqlParameter("Costo", SqlDbType.Money) { Value = producto.costo });
+                    comando.Parameters.Add(new SqlParameter("PrecioVenta", SqlDbType.Money) { Value = producto.precioVenta });
+                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = producto.stock });
+                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.VarChar) { Value = producto.idUsuario });
                 }
                 conexion.Close();
             }
         }
 
-        public static void EliminarProducto(_Productos producto)
+        public static void EliminarProducto(Productos producto)
         {
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
             var query = "DELETE FROM Producto WHERE Id = @Id";
@@ -147,41 +147,11 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = producto.Id });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = producto.id });
                     comando.ExecuteNonQuery();
                 }
             }
         }
-
-        public _Productos GetProductById(int id)
-        {
-            string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT * FROM Producto WHERE id = @id";
-
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("id", id);
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    int Id = (int)reader.GetInt64(0);
-                    string descripciones = reader.GetString(1);
-                    int costo = (int)reader.GetDecimal(2);
-                    int precioVenta = (int)reader.GetDecimal (3);
-                    int stock = reader.GetInt32(4);
-                    int idUsuario = (int)reader.GetInt64(5);
-
-                    _Productos productos = new _Productos(Id, descripciones, costo, precioVenta, stock, idUsuario);
-
-                    return productos;
-                }
-                throw new Exception("Id no fue encontrado");
-            }
-        }
     }
 }
+
