@@ -16,7 +16,7 @@ namespace NicolasCanavese
             public int IdProducto { get; set; }
             public int Stock { get; set; }
             public int IdVenta { get; set; }
-
+        }
             public static List<ProductoVendido> ObtenerProductoVendido(int Id)
             {
                 List<ProductoVendido> lista = new List<ProductoVendido>();
@@ -128,7 +128,7 @@ namespace NicolasCanavese
                 }
             }
 
-            public static void EliminarProductoVendido(ProductoVendido ProductoVendido)
+            public static void EliminarProductoVendido(ProductoVendido productoVendido)
             {
                 string connectionString = @"Server=localhost\SQLEXPRESS;Database=SistemaGestion2;Trusted_Connection=True;";
                 var query = "DELETE FROM ProductoVendido WHERE Id = @Id";
@@ -138,12 +138,10 @@ namespace NicolasCanavese
                     conexion.Open();
                     using (SqlCommand comando = new SqlCommand(query, conexion))
                     {
-                        comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = ProductoVendido.Id });
+                        comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = productoVendido.Id });
                     }
                     conexion.Close();
                 }
             }
         }
     }
-
-}

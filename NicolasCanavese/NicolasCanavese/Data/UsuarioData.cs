@@ -5,10 +5,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NicolasCanavese.Modelos;
 
 namespace NicolasCanavese
 {
+    internal class Usuarios
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+    }
     internal class UsuarioData
     {
         private string? connectionString;
@@ -37,12 +45,12 @@ namespace NicolasCanavese
                             while (dr.Read())
                             {
                                 var usuario = new Usuarios();
-                                usuario.id = Convert.ToInt32(dr["ID"]);
-                                usuario.nombre = dr["Nombres"].ToString();
-                                usuario.apellido = dr["Apellidos"].ToString();
-                                usuario.nombreUsuario = dr["NombreUsuarios"].ToString();
-                                usuario.password = dr["Contraseña"].ToString();
-                                usuario.email = dr["Mail"].ToString();
+                                usuario.Id = Convert.ToInt32(dr["ID"]);
+                                usuario.Nombre = dr["Nombres"].ToString();
+                                usuario.Apellido = dr["Apellidos"].ToString();
+                                usuario.NombreUsuario = dr["NombreUsuarios"].ToString();
+                                usuario.Password = dr["Contraseña"].ToString();
+                                usuario.Email = dr["Mail"].ToString();
                                 lista.Add(usuario);
                             }
                         }
@@ -71,12 +79,12 @@ namespace NicolasCanavese
                             while (dr.Read())
                             {
                                 var usuario = new Usuarios();
-                                usuario.id = Convert.ToInt32(dr["Id"]);
-                                usuario.nombre = dr["Nombre"].ToString();
-                                usuario.apellido = dr["Apellido"].ToString();
-                                usuario.nombreUsuario = dr["NombreUsuario"].ToString();
-                                usuario.password = dr["Contraseña"].ToString();
-                                usuario.email = dr["Mail"].ToString();
+                                usuario.Id = Convert.ToInt32(dr["Id"]);
+                                usuario.Nombre = dr["Nombre"].ToString();
+                                usuario.Apellido = dr["Apellido"].ToString();
+                                usuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                                usuario.Password = dr["Contraseña"].ToString();
+                                usuario.Email = dr["Mail"].ToString();
                                 lista.Add(usuario);
                             }
                         }
@@ -97,13 +105,13 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Nombre", SqlDbType.VarChar) { Value = usuario.nombre });
-                    comando.Parameters.Add(new SqlParameter("Apellido", SqlDbType.VarChar) { Value = usuario.apellido });
-                    comando.Parameters.Add(new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = usuario.nombreUsuario });
-                    comando.Parameters.Add(new SqlParameter("Contraseña", SqlDbType.VarChar) { Value = usuario.password });
-                    comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.email });
+                    comando.Parameters.Add(new SqlParameter("Nombre", SqlDbType.VarChar) { Value = usuario.Nombre });
+                    comando.Parameters.Add(new SqlParameter("Apellido", SqlDbType.VarChar) { Value = usuario.Apellido });
+                    comando.Parameters.Add(new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = usuario.NombreUsuario });
+                    comando.Parameters.Add(new SqlParameter("Contraseña", SqlDbType.VarChar) { Value = usuario.Password });
+                    comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.Email });
+                    comando.ExecuteNonQuery();
                 }
-                conexion.Close();
             }
         }
 
@@ -123,12 +131,13 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = usuario.id });
-                    comando.Parameters.Add(new SqlParameter("Nombre", SqlDbType.VarChar) { Value = usuario.nombre });
-                    comando.Parameters.Add(new SqlParameter("Apellido", SqlDbType.VarChar) { Value = usuario.apellido });
-                    comando.Parameters.Add(new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = usuario.nombreUsuario });
-                    comando.Parameters.Add(new SqlParameter("Contraseña", SqlDbType.Int) { Value = usuario.password });
-                    comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.email });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = usuario.Id });
+                    comando.Parameters.Add(new SqlParameter("Nombre", SqlDbType.VarChar) { Value = usuario.Nombre });
+                    comando.Parameters.Add(new SqlParameter("Apellido", SqlDbType.VarChar) { Value = usuario.Apellido });
+                    comando.Parameters.Add(new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = usuario.NombreUsuario });
+                    comando.Parameters.Add(new SqlParameter("Contraseña", SqlDbType.Int) { Value = usuario.Password });
+                    comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.Email });
+                    comando.ExecuteNonQuery();
                 }
                 conexion.Close();
             }
@@ -144,7 +153,7 @@ namespace NicolasCanavese
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = usuario.id });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = usuario.Id });
                     comando.ExecuteNonQuery();
                 }
                 conexion.Close();
